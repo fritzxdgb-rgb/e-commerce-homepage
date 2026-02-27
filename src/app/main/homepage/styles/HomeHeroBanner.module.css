@@ -1,0 +1,233 @@
+.hero {
+  background: var(--surface-alt);
+  min-height: clamp(560px, 80vh, 760px);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  color: var(--near-black);
+  padding: 32px 0;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 80% 50%, rgba(0, 113, 227, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heroInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  width: 100%;
+  z-index: 1;
+}
+
+.heroAside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 12px 0;
+}
+
+.heroSocials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.heroSocialLink {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--near-black);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: var(--transition-smooth);
+}
+
+.heroSocialLink:hover {
+  color: var(--accent);
+  border-color: rgba(0, 113, 227, 0.35);
+  transform: translateY(-2px);
+}
+
+.heroDots {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heroDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(10, 11, 15, 0.2);
+  transition: var(--transition-smooth);
+}
+
+.heroDotActive {
+  height: 24px;
+  background: var(--near-black);
+}
+
+.heroContent {
+  flex: 1;
+  max-width: 520px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.heroContentVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heroLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(0, 113, 227, 0.1);
+  border-radius: 999px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  font-size: var(--fs-xxl);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.heroTitleItalic {
+  background: linear-gradient(90deg, var(--near-black) 0%, #0071e3 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroDescription {
+  font-size: var(--fs-base);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 420px;
+}
+
+.heroActions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.heroImageWrap {
+  flex: 1;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.97) translateX(30px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.heroImageWrapVisible {
+  opacity: 1;
+  transform: scale(1) translateX(0);
+}
+
+.heroImageFrame {
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+.heroImageFrame img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.14));
+  transition: transform 10s linear;
+}
+
+.heroImageWrapVisible img {
+  transform: scale(1.02);
+  animation: heroFloat 12s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0) scale(1.02); }
+  50% { transform: translateY(-8px) scale(1.02); }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: auto;
+    padding: 64px 0;
+  }
+  .heroInner {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 48px;
+  }
+  .heroAside {
+    flex-direction: row;
+    gap: 24px;
+    order: 3;
+  }
+  .heroDots {
+    flex-direction: row;
+  }
+  .heroContent {
+    max-width: 100%;
+    order: 2;
+  }
+  .heroDescription {
+    margin: 0 auto 32px;
+  }
+  .heroActions {
+    justify-content: center;
+  }
+  .heroImageWrap {
+    order: 1;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px 0;
+  }
+  .heroLabel {
+    margin-bottom: 16px;
+  }
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .btn-primary, .btn-ghost {
+    width: 100%;
+  }
+}

@@ -1,23 +1,25 @@
-import Navbar from './components/Navbar'
-import HeroBanner from './components/HeroBanner'
-import CollectionGrid from './components/CollectionGrid'
-import ProductSection from './components/ProductSection'
-import DealOfTheWeek from './components/DealOfTheWeek'
-import BlogPreview from './components/BlogPreview'
-import Footer from './components/Footer'
+import React, { memo } from 'react';
+import HomeNavbar from './components/HomeNavbar';
+import HomeHeroBanner from './components/HomeHeroBanner';
+import HomeCollectionGrid from './components/HomeCollectionGrid';
+import HomeProductSection from './components/HomeProductSection';
+import HomeDealOfTheWeek from './components/HomeDealOfTheWeek';
+import HomeFooter from './components/HomeFooter';
 
-export default function HomePage() {
+const HomePage = memo(() => {
   return (
     <div className="homepage-wrapper">
-      <Navbar />
+      <HomeNavbar />
       <main>
-        <HeroBanner />
-        <CollectionGrid />
-        <ProductSection />
-        <DealOfTheWeek />
-        <BlogPreview />
+        <HomeHeroBanner />
+        <HomeCollectionGrid />
+        <HomeProductSection />
+        <HomeDealOfTheWeek />
       </main>
-      <Footer />
+      <HomeFooter />
     </div>
-  )
-}
+  );
+});
+
+HomePage.displayName = 'HomePage';
+export default HomePage;
